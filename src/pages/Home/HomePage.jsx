@@ -8,14 +8,14 @@ const HomePage = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const canvasRef = useRef(null);
 
-  // Image URLs (using placeholder services)
+  // Image URLs (using higher quality placeholder services)
   const images = {
-    heroImage: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    startupOffice: 'https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    teamCollaboration: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
-    techcorpLogo: 'https://via.placeholder.com/150x60/6366f1/FFFFFF?text=TechCorp',
-    ventureCapitalLogo: 'https://via.placeholder.com/150x60/8b5cf6/FFFFFF?text=Venture+Capital',
-    incubatorLogo: 'https://via.placeholder.com/150x60/ec4899/FFFFFF?text=Incubator'
+    heroImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    startupOffice: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    teamCollaboration: 'https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+    techcorpLogo: 'https://via.placeholder.com/200x80/6366f1/FFFFFF?text=TechCorp&font=montserrat',
+    ventureCapitalLogo: 'https://via.placeholder.com/200x80/8b5cf6/FFFFFF?text=Venture+Capital&font=montserrat',
+    incubatorLogo: 'https://via.placeholder.com/200x80/ec4899/FFFFFF?text=Incubator&font=montserrat'
   };
 
   // Typing animation
@@ -144,13 +144,33 @@ const HomePage = () => {
   const features = [
     {
       title: "Powerful Templates",
-      description: "Pre-built solutions for rapid deployment",
-      image: images.startupOffice
+      description: "Pre-built solutions for rapid deployment with customizable options for any industry",
+      image: images.startupOffice,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        </svg>
+      )
     },
     {
-      title: "Collaborative Tools",
-      description: "Everything your team needs to succeed", 
-      image: images.teamCollaboration
+      title: "Collaborative Tools", 
+      description: "Everything your team needs to succeed with real-time collaboration features",
+      image: images.teamCollaboration,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      )
+    },
+    {
+      title: "Analytics Dashboard",
+      description: "Comprehensive metrics and insights to track your growth and performance",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      )
     }
   ];
 
@@ -167,9 +187,13 @@ const HomePage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Hero Section */}
-        <section className="min-h-screen flex flex-col justify-center pt-24 pb-16 relative">
+        <section className="min-h-[90vh] flex flex-col justify-center pt-24 pb-16 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative z-10">
+              <div className="inline-block px-4 py-2 mb-6 bg-indigo-900/30 backdrop-blur-sm rounded-full border border-indigo-700">
+                <span className="text-sm font-medium text-indigo-300">The Future of Startups is Here</span>
+              </div>
+              
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
                 <span className="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
                   {typedText}
@@ -188,16 +212,16 @@ const HomePage = () => {
               <div className="flex flex-wrap gap-4">
                 <button 
                   onClick={() => navigate('/ideas')}
-                  className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center"
+                  className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center group"
                 >
                   Explore Ideas
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </button>
-                <button className="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-medium py-3 px-8 rounded-lg shadow hover:shadow-md transition-all duration-300 flex items-center">
+                <button className="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-medium py-3 px-8 rounded-lg shadow hover:shadow-md transition-all duration-300 flex items-center group">
                   Watch Demo
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                   </svg>
                 </button>
@@ -223,6 +247,7 @@ const HomePage = () => {
                   className="w-full h-auto max-w-xl rounded-2xl shadow-2xl border-4 border-white/10 animate-float"
                 />
                 <div className="absolute -z-10 -inset-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl opacity-20 blur-2xl"></div>
+                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-pink-500 rounded-full filter blur-[80px] opacity-30"></div>
               </div>
             </div>
           </div>
@@ -236,10 +261,10 @@ const HomePage = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative z-10">
             {stats.map((stat, index) => (
-              <div key={index} className="p-6">
-                <div className="text-5xl mb-2">{stat.icon}</div>
-                <h3 className="text-5xl font-bold text-white mb-2">{stat.value}</h3>
-                <p className="text-gray-300">{stat.label}</p>
+              <div key={index} className="p-6 group">
+                <div className="text-5xl mb-2 group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
+                <h3 className="text-5xl font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">{stat.value}</h3>
+                <p className="text-gray-300 group-hover:text-white transition-colors">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -247,19 +272,33 @@ const HomePage = () => {
 
         {/* Features Section */}
         <section className="py-20">
-          <h2 className="text-3xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400">
-            Everything You Need to Succeed
-          </h2>
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 mb-4 bg-indigo-900/30 backdrop-blur-sm rounded-full border border-indigo-700 text-indigo-300 text-sm font-medium">
+              OUR SOLUTIONS
+            </span>
+            <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400">
+              Everything You Need to Succeed
+            </h2>
+            <p className="text-xl text-gray-400 mt-4 max-w-2xl mx-auto">
+              Comprehensive tools designed to accelerate your startup journey
+            </p>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-2xl">
+              <div 
+                key={index} 
+                className="group relative overflow-hidden rounded-2xl shadow-2xl transition-all duration-500 hover:shadow-indigo-500/20 hover:-translate-y-2"
+              >
                 <img 
                   src={feature.image} 
                   alt={feature.title}
-                  className="w-full h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
+                  <div className="absolute top-6 right-6 p-3 bg-indigo-600/80 backdrop-blur-sm rounded-lg group-hover:bg-pink-600/80 transition-colors">
+                    {feature.icon}
+                  </div>
                   <h3 className="text-2xl font-bold text-white">{feature.title}</h3>
                   <p className="text-gray-300">{feature.description}</p>
                 </div>
@@ -271,10 +310,15 @@ const HomePage = () => {
         {/* Testimonials Section */}
         <section className="py-20">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400">
-              What Our Clients Say
-            </h2>
-            <div className="bg-gray-800/50 backdrop-blur-md p-8 rounded-xl border border-gray-700 relative overflow-hidden">
+            <div className="text-center mb-16">
+              <span className="inline-block px-4 py-2 mb-4 bg-indigo-900/30 backdrop-blur-sm rounded-full border border-indigo-700 text-indigo-300 text-sm font-medium">
+                CLIENT SUCCESS
+              </span>
+              <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400">
+                What Our Clients Say
+              </h2>
+            </div>
+            <div className="bg-gray-800/50 backdrop-blur-md p-8 rounded-xl border border-gray-700 relative overflow-hidden transition-all duration-500 hover:border-indigo-500/50">
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute right-0 top-0 w-32 h-32 bg-indigo-500 rounded-full filter blur-[80px]"></div>
                 <div className="absolute left-0 bottom-0 w-32 h-32 bg-purple-500 rounded-full filter blur-[80px]"></div>
@@ -298,7 +342,7 @@ const HomePage = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 mx-1 rounded-full transition-all ${currentTestimonial === index ? 'bg-indigo-400 w-6' : 'bg-gray-600'}`}
+                    className={`w-3 h-3 mx-1 rounded-full transition-all ${currentTestimonial === index ? 'bg-indigo-400 w-6' : 'bg-gray-600 hover:bg-gray-500'}`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
                 ))}
@@ -314,18 +358,33 @@ const HomePage = () => {
             <div className="absolute right-1/4 bottom-0 w-64 h-64 bg-purple-500 rounded-full filter blur-[100px]"></div>
           </div>
           <div className="max-w-2xl mx-auto relative z-10 px-4">
+            <span className="inline-block px-4 py-2 mb-4 bg-indigo-900/30 backdrop-blur-sm rounded-full border border-indigo-700 text-indigo-300 text-sm font-medium">
+              READY TO START?
+            </span>
             <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-400">
               Ready to Launch Your Unicorn?
             </h2>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
               Join thousands of entrepreneurs who transformed their ideas into successful businesses with our platform.
             </p>
-            <button 
-              onClick={() => navigate('/signup')}
-              className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium py-4 px-10 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg"
-            >
-              Get Started Today
-            </button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button 
+                onClick={() => navigate('/signup')}
+                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium py-4 px-10 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-lg flex items-center group"
+              >
+                Get Started Today
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <button className="bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white font-medium py-4 px-10 rounded-lg shadow hover:shadow-md transition-all duration-300 flex items-center group">
+                Contact Sales
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+              </button>
+            </div>
           </div>
         </section>
       </div>
