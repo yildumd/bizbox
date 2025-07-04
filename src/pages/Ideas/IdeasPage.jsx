@@ -11,63 +11,499 @@ const IdeasPage = () => {
     { id: 'saas', name: 'SaaS' },
     { id: 'mobile', name: 'Mobile Apps' },
     { id: 'ai', name: 'AI Solutions' },
-    { id: 'fintech', name: 'FinTech' }
+    { id: 'fintech', name: 'FinTech' },
+    { id: 'livestock', name: 'Livestock Farming' },
+    { id: 'factory', name: 'Factory' },
+    { id: 'restaurant', name: 'Restaurant' },
+    { id: 'beverage', name: 'Water/Juice Production' },
+    { id: 'foodprocessing', name: 'Food Processing' }
   ];
 
   const businessIdeas = [
+    // E-Commerce (Nigeria/Africa focused)
     {
       id: 1,
-      title: "AgriTech Marketplace",
-      description: "Farm-to-consumer platform connecting local farmers with buyers",
+      title: "Afrocentric Fashion Marketplace",
+      description: "Online platform for African designers to sell authentic African prints and designs globally",
       category: 'ecommerce',
-      revenue: "$10K-$50K/month",
+      revenue: "$15K-$70K/month",
       difficulty: "Intermediate",
-      image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+      image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
     },
     {
       id: 2,
-      title: "Community Savings App",
-      description: "Digital platform for group savings and collective investments",
-      category: 'fintech',
-      revenue: "$5K-$20K/month",
-      difficulty: "Beginner",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1511&q=80"
+      title: "Farmers' Produce Aggregator",
+      description: "Connects smallholder farmers directly to markets, reducing middlemen in the food chain",
+      category: 'ecommerce',
+      revenue: "$10K-$50K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
     },
     {
       id: 3,
-      title: "AI-Powered CRM",
-      description: "Next-gen customer relationship management with predictive analytics",
-      category: 'saas',
-      revenue: "$20K-$100K/month",
-      difficulty: "Advanced",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+      title: "African Art & Crafts Export Platform",
+      description: "Showcases authentic African art to global buyers with secure shipping",
+      category: 'ecommerce',
+      revenue: "$20K-$80K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1584735422186-97e9d1af8f1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
     },
     {
       id: 4,
-      title: "HealthTech Wearable",
-      description: "Smart wearable with personalized health recommendations",
-      category: 'mobile',
-      revenue: "$50K-$200K/month",
-      difficulty: "Advanced",
-      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+      title: "Used Electronics Marketplace",
+      description: "Specialized platform for quality-checked secondhand phones, laptops and gadgets",
+      category: 'ecommerce',
+      revenue: "$30K-$100K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
     },
     {
       id: 5,
-      title: "Sustainable Fashion Platform",
-      description: "Marketplace for eco-friendly clothing and accessories",
+      title: "Bulk Foodstuff Delivery Service",
+      description: "Wholesale platform for restaurants and caterers to order ingredients in bulk",
       category: 'ecommerce',
-      revenue: "$15K-$60K/month",
+      revenue: "$25K-$90K/month",
       difficulty: "Intermediate",
-      image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+      image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
     },
+
+    // FinTech (Nigeria/Africa focused)
     {
       id: 6,
-      title: "AI Content Generator",
-      description: "Automated content creation for marketers and bloggers",
-      category: 'ai',
+      title: "Mobile POS for Informal Markets",
+      description: "Affordable POS solutions tailored for market traders and roadside businesses",
+      category: 'fintech',
+      revenue: "$50K-$200K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1613243555988-441166d4d6fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 7,
+      title: "Agric Crowdfunding Platform",
+      description: "Connects small farmers with investors for farm financing with profit sharing",
+      category: 'fintech',
+      revenue: "$30K-$150K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 8,
+      title: "Cross-Border Remittance Solution",
+      description: "Low-cost money transfer service for African diaspora sending money home",
+      category: 'fintech',
+      revenue: "$100K-$500K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+    },
+    {
+      id: 9,
+      title: "Micro-Insurance Platform",
+      description: "Pay-as-you-go insurance for low-income earners via mobile money",
+      category: 'fintech',
+      revenue: "$40K-$180K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 10,
+      title: "Savings Club Digital Platform",
+      description: 'Digitizes traditional "ajo" and "esusu" savings systems with added security',
+      category: 'fintech',
+      revenue: "$25K-$120K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1511&q=80"
+    },
+    
+    // Livestock Farming (Nigeria/Africa focused)
+    {
+      id: 11,
+      title: "Snail Farming (Heliculture)",
+      description: "High-demand export business with low startup costs and high profit margins",
+      category: 'livestock',
+      revenue: "$5K-$30K/month",
+      difficulty: "Beginner",
+      image: "https://images.unsplash.com/photo-1584735422186-97e9d1af8f1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 12,
+      title: "Grasscutter (Cane Rat) Farming",
+      description: "Meat production for high-end restaurants and export markets",
+      category: 'livestock',
+      revenue: "$8K-$40K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1584735422186-97e9d1af8f1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 13,
+      title: "Poultry Feed Production",
+      description: "Affordable, high-quality feed for Nigeria's booming poultry industry",
+      category: 'livestock',
+      revenue: "$15K-$60K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1584735422186-97e9d1af8f1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 14,
+      title: "Catfish Hatchery & Farm",
+      description: "Year-round production of catfish fingerlings and mature fish",
+      category: 'livestock',
+      revenue: "$10K-$50K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1584735422186-97e9d1af8f1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 15,
+      title: "Goat & Sheep Breeding Farm",
+      description: "Premium breeding stock for religious festivals and meat markets",
+      category: 'livestock',
+      revenue: "$7K-$35K/month",
+      difficulty: "Beginner",
+      image: "https://images.unsplash.com/photo-1550482787-7f9c0b7a9c0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 16,
+      title: "Bee Farming & Honey Production",
+      description: "Organic honey production with byproducts like beeswax and propolis",
+      category: 'livestock',
+      revenue: "$6K-$25K/month",
+      difficulty: "Beginner",
+      image: "https://images.unsplash.com/photo-1587049352851-8d4e89133924?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80"
+    },
+
+    // Factory (Nigeria/Africa focused)
+    {
+      id: 17,
+      title: "Sachet Water Production",
+      description: "Pure water factory serving local communities with affordable drinking water",
+      category: 'factory',
+      revenue: "$30K-$150K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 18,
+      title: "Palm Oil Processing Plant",
+      description: "Small-scale mechanized processing of red palm oil from local farms",
+      category: 'factory',
+      revenue: "$50K-$200K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+    },
+    {
+      id: 19,
+      title: "Plastic Recycling Factory",
+      description: "Transforms waste plastic into useful products like chairs, tiles and bins",
+      category: 'factory',
+      revenue: "$40K-$180K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1630&q=80"
+    },
+    {
+      id: 20,
+      title: "Cassava Processing Plant",
+      description: "Produces garri, flour, starch and other cassava derivatives",
+      category: 'factory',
+      revenue: "$60K-$250K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+    },
+    {
+      id: 21,
+      title: "Cement Block Industry",
+      description: "Produces concrete blocks for Nigeria's booming construction sector",
+      category: 'factory',
+      revenue: "$25K-$120K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 22,
+      title: "Tomato Paste Production",
+      description: "Processes fresh tomatoes into paste, reducing post-harvest losses",
+      category: 'factory',
+      revenue: "$45K-$200K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+    },
+
+    // Restaurant (Nigeria/Africa focused)
+    {
+      id: 23,
+      title: "Local Soup Kitchen Franchise",
+      description: "Standardized preparation of Nigerian soups (egusi, ogbono, etc) for urban workers",
+      category: 'restaurant',
+      revenue: "$15K-$60K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 24,
+      title: "Suya Spot & Grill",
+      description: "Specialty restaurant offering various Nigerian grilled meats with signature spices",
+      category: 'restaurant',
+      revenue: "$10K-$50K/month",
+      difficulty: "Beginner",
+      image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 25,
+      title: "Amala Joint Chain",
+      description: "Specializes in Yoruba cuisine (amala, ewedu, gbegiri) with modern hygiene standards",
+      category: 'restaurant',
+      revenue: "$20K-$80K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 26,
+      title: "Jollof Rice Express",
+      description: "Quick-service restaurants specializing in various Jollof rice recipes across West Africa",
+      category: 'restaurant',
+      revenue: "$25K-$100K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 27,
+      title: "Bukka Joint Franchise",
+      description: "Standardized local eateries offering affordable Nigerian meals",
+      category: 'restaurant',
       revenue: "$30K-$120K/month",
       difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 28,
+      title: "Small Chops Catering Service",
+      description: "Specializes in Nigerian finger foods for events and corporate functions",
+      category: 'restaurant',
+      revenue: "$15K-$70K/month",
+      difficulty: "Beginner",
+      image: "https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+
+    // Water/Juice Production (Nigeria/Africa focused)
+    {
+      id: 29,
+      title: "Premium Sachet Water Factory",
+      description: "High-quality purified water with mineral additives in various pack sizes",
+      category: 'beverage',
+      revenue: "$50K-$250K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 30,
+      title: "Tigernut Milk (Kunun Aya) Production",
+      description: "Processes tigernuts into nutritious dairy-free milk drink",
+      category: 'beverage',
+      revenue: "$20K-$90K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 31,
+      title: "Zobo Drink Factory",
+      description: "Industrial-scale production of hibiscus-based healthy drinks",
+      category: 'beverage',
+      revenue: "$15K-$60K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 32,
+      title: "Bottled Spring Water",
+      description: "Sources and packages natural spring water for premium market",
+      category: 'beverage',
+      revenue: "$80K-$400K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 33,
+      title: "Fruit Juice Concentrate Plant",
+      description: "Processes local fruits into concentrates for juice companies",
+      category: 'beverage',
+      revenue: "$60K-$300K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+    {
+      id: 34,
+      title: "Coconut Water Processing",
+      description: "Packages fresh coconut water with extended shelf life",
+      category: 'beverage',
+      revenue: "$25K-$120K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    },
+
+    // Mobile Apps (Nigeria/Africa focused)
+    {
+      id: 35,
+      title: "AgriMarket Price Tracker",
+      description: "Real-time agricultural commodity prices across Nigerian markets",
+      category: 'mobile',
+      revenue: "$10K-$50K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+    },
+    {
+      id: 36,
+      title: "Public Transport Navigation",
+      description: "App for navigating informal transport systems (danfo, keke, okada routes)",
+      category: 'mobile',
+      revenue: "$15K-$70K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+    },
+    {
+      id: 37,
+      title: "Local Language Learning App",
+      description: "Interactive platform for learning Nigerian/African languages",
+      category: 'mobile',
+      revenue: "$5K-$30K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+    },
+
+    // AI Solutions (Nigeria/Africa focused)
+    {
+      id: 38,
+      title: "AI-Powered Agric Advisory",
+      description: "Chatbot that gives farming advice based on location and season",
+      category: 'ai',
+      revenue: "$20K-$90K/month",
+      difficulty: "Advanced",
       image: "https://images.unsplash.com/photo-1677442135136-760c813a743e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80"
+    },
+    {
+      id: 39,
+      title: "Local Language Voice AI",
+      description: "Voice assistants and chatbots in African languages",
+      category: 'ai',
+      revenue: "$50K-$200K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1677442135136-760c813a743e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80"
+    },
+    
+    // Food Processing (Nigeria/Africa focused)
+    {
+      id: 40,
+      title: "Garri Processing Plant",
+      description: "Industrial-scale production of premium garri with various flavors (yellow, ijebu, etc)",
+      category: 'foodprocessing',
+      revenue: "$50K-$200K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+    },
+    {
+      id: 41,
+      title: "Plantain Chip Factory",
+      description: "Produces packaged fried and baked plantain chips for retail markets",
+      category: 'foodprocessing',
+      revenue: "$30K-$150K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+    },
+    {
+      id: 42,
+      title: "Peanut Butter Production",
+      description: "Processes groundnuts into various peanut butter products (smooth, crunchy, flavored)",
+      category: 'foodprocessing',
+      revenue: "$25K-$120K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+    },
+    {
+      id: 43,
+      title: "Dried Fish & Meat Processing",
+      description: "Modern hygienic processing of smoked fish and kilishi (dried meat)",
+      category: 'foodprocessing',
+      revenue: "$40K-$180K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+    },
+    {
+      id: 44,
+      title: "Fruit Drying & Packaging",
+      description: "Processes seasonal fruits into dried snacks (mango, pineapple, banana chips)",
+      category: 'foodprocessing',
+      revenue: "$35K-$160K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+    },
+    {
+      id: 45,
+      title: "Instant Yam Flour Production",
+      description: "Processes yam into easy-to-prepare flour for poundo yam",
+      category: 'foodprocessing',
+      revenue: "$60K-$250K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+    },
+    {
+      id: 46,
+      title: "Soy Milk & Tofu Production",
+      description: "Produces affordable protein alternatives from soybeans",
+      category: 'foodprocessing',
+      revenue: "$20K-$90K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+    },
+    {
+      id: 47,
+      title: "Nigerian Spice Blends Production",
+      description: "Commercial production of authentic Nigerian spice mixes (suya pepper, yaji, etc)",
+      category: 'foodprocessing',
+      revenue: "$30K-$150K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1605870445919-838d190e8e1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+    },
+    {
+      id: 48,
+      title: "Organic Curry Powder Factory",
+      description: "Produces African-style curry powders from locally sourced ingredients",
+      category: 'foodprocessing',
+      revenue: "$25K-$120K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1605870445919-838d190e8e1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+    },
+    {
+      id: 49,
+      title: "Pepper Grinding & Packaging",
+      description: "Processes fresh peppers into ready-to-use pastes and dried flakes",
+      category: 'foodprocessing',
+      revenue: "$20K-$90K/month",
+      difficulty: "Beginner",
+      image: "https://images.unsplash.com/photo-1605870445919-838d190e8e1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+    },
+    {
+      id: 50,
+      title: "African Soup Mix Production",
+      description: "Pre-measured spice mixes for egusi, ogbono, and other Nigerian soups",
+      category: 'foodprocessing',
+      revenue: "$35K-$160K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1605870445919-838d190e8e1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+    },
+    {
+      id: 51,
+      title: "Dried Onion/Garlic Powder",
+      description: "Processes fresh onions and garlic into shelf-stable powders",
+      category: 'foodprocessing',
+      revenue: "$40K-$180K/month",
+      difficulty: "Intermediate",
+      image: "https://images.unsplash.com/photo-1605870445919-838d190e8e1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+    },
+    {
+      id: 52,
+      title: "Specialty Seasoning Cubes",
+      description: "Produces healthier alternatives to commercial seasoning cubes",
+      category: 'foodprocessing',
+      revenue: "$50K-$250K/month",
+      difficulty: "Advanced",
+      image: "https://images.unsplash.com/photo-1605870445919-838d190e8e1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
     }
   ];
 
