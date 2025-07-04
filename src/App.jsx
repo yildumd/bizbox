@@ -3,12 +3,13 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import LoadingSpinner from './components/ui/LoadingSpinner';
-import ErrorBoundary from './components/ui/ErrorBoundary'; // Updated import path
+import ErrorBoundary from './components/ui/ErrorBoundary';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import './styles/global.css';
 
 // Lazy-loaded pages with error boundaries
 const HomePage = lazy(() => import('./pages/Home/HomePage'));
+const AboutPage = lazy(() => import("./pages/About/AboutPage"));// New import
 const IdeasPage = lazy(() => import('./pages/Ideas/IdeasPage'));
 const ConsultationPage = lazy(() => import('./pages/Consultation/ConsultationPage'));
 const DashboardPage = lazy(() => import('./pages/Dashboard/DashboardPage'));
@@ -24,6 +25,7 @@ export default function App() {
           <Suspense fallback={<LoadingSpinner fullPage />}>
             <Routes>
               <Route index element={<HomePage />} />
+              <Route path="about" element={<AboutPage />} /> {/* New route */}
               <Route path="ideas" element={<IdeasPage />} />
               <Route path="consult" element={<ConsultationPage />} />
               <Route path="dashboard" element={

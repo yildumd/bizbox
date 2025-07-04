@@ -15,6 +15,12 @@ export default function Navbar() {
           </div>
           <div className="flex items-center space-x-8">
             <Link 
+              to="/about" 
+              className="text-gray-300 hover:text-white transition-colors duration-200"
+            >
+              About
+            </Link>
+            <Link 
               to="/ideas" 
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
