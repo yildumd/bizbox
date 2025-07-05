@@ -1,17 +1,23 @@
-// src/pages/NotFoundPage.jsx
-import { Link } from 'react-router-dom';
+// src/App.jsx (or your main router file)
+import { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import NotFoundPage from './pages/NotFoundPage';
 
-export default function NotFoundPage() {
+// Dynamic imports with proper error boundaries
+const HomePage = lazy(() => import('./pages/Home/HomePage'));
+const AboutPage = lazy(() => import('./pages/About/AboutPage'));
+const IdeasPage = lazy(() => import('./pages/BusinessIdeas/IdeasPage'));
+
+function App() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center p-6">
-      <h1 className="text-9xl font-bold text-gray-400">404</h1>
-      <p className="text-2xl text-gray-600 mt-4">Page Not Found</p>
-      <Link 
-        to="/" 
-        className="mt-8 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-      >
-        Return Home
-      </Link>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/ideas" element={<IdeasPage />} />
+        {/* Add this catch-all route */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
   );
 }
