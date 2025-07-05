@@ -5,22 +5,22 @@ const IdeasPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const ideaCategories = [
-    { id: 'all', name: 'All Ideas' },
-    { id: 'ecommerce', name: 'E-Commerce' },
-    { id: 'saas', name: 'SaaS' },
-    { id: 'mobile', name: 'Mobile Apps' },
-    { id: 'ai', name: 'AI Solutions' },
-    { id: 'fintech', name: 'FinTech' },
-    { id: 'livestock', name: 'Livestock Farming' },
-    { id: 'factory', name: 'Factory' },
-    { id: 'restaurant', name: 'Restaurant' },
-    { id: 'beverage', name: 'Beverage Production' },
-    { id: 'foodprocessing', name: 'Food Processing' }
-  ];
+const ideaCategories = [
+  { id: 'all', name: 'All Ideas' },
+  { id: 'ecommerce', name: 'E-Commerce' },
+  { id: 'saas', name: 'SaaS' },
+  { id: 'mobile', name: 'Mobile Apps' },
+  { id: 'ai', name: 'AI Solutions' },
+  { id: 'fintech', name: 'FinTech' },
+  { id: 'livestock', name: 'Livestock Farming' },
+  { id: 'factory', name: 'Factory' },
+  { id: 'restaurant', name: 'Restaurant' },
+  { id: 'beverage', name: 'Beverage Production' },
+  { id: 'foodprocessing', name: 'Food Processing' }
+]; // <-- This semicolon was missing
 
-  // Deduplicated business ideas array (each idea appears only once)
-  const businessIdeas = useMemo(() => [
+// Deduplicated business ideas array (each idea appears only once)
+const businessIdeas = useMemo(() => [
     // E-Commerce
     {
       id: 'afrocentric-fashion',
@@ -528,17 +528,28 @@ const IdeasPage = () => {
     }
   ], []);
 
-  // Optimized filtering with memoization
+  // Optimized filtering with error handling
   const filteredIdeas = useMemo(() => {
-    return businessIdeas.filter(idea => {
-      const matchesCategory = activeFilter === 'all' || idea.category === activeFilter;
-      const matchesSearch = searchQuery === '' ||
-        idea.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        idea.description.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      return matchesCategory && matchesSearch;
-    });
+    try {
+      return businessIdeas.filter(idea => {
+        const matchesCategory = activeFilter === 'all' || idea.category === activeFilter;
+        const matchesSearch = searchQuery === '' ||
+          idea.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          (idea.description && idea.description.toLowerCase().includes(searchQuery.toLowerCase()));
+        
+        return matchesCategory && matchesSearch;
+      });
+    } catch (error) {
+      console.error('Filtering error:', error);
+      return [];
+    }
   }, [activeFilter, searchQuery, businessIdeas]);
+
+  // Image error handler
+  const handleImageError = (e) => {
+    e.target.src = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80';
+    e.target.alt = 'Default business idea';
+  };
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -549,7 +560,7 @@ const IdeasPage = () => {
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Business Ideas Marketplace</h1>
             <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
-              Discover proven business models and ready-to-launch concepts curated for success
+              Discover proven business models and ready-to-launch concepts
             </p>
           </div>
         </div>
@@ -587,10 +598,7 @@ const IdeasPage = () => {
             {ideaCategories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => {
-                  console.log('Setting filter to:', category.id); // Debug
-                  setActiveFilter(category.id);
-                }}
+                onClick={() => setActiveFilter(category.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   activeFilter === category.id
                     ? 'bg-indigo-600 text-white'
@@ -612,6 +620,8 @@ const IdeasPage = () => {
                   src={idea.image}
                   alt={idea.title}
                   className="w-full h-full object-cover"
+                  onError={handleImageError}
+                  loading="lazy"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                   <span className="inline-block px-3 py-1 bg-indigo-600 text-white text-xs font-semibold rounded-full">
@@ -680,6 +690,15 @@ const IdeasPage = () => {
             <p className="mt-1 text-gray-500">
               Try adjusting your search or filter to find what you're looking for.
             </p>
+            <button
+              onClick={() => {
+                setActiveFilter('all');
+                setSearchQuery('');
+              }}
+              className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+            >
+              Reset Filters
+            </button>
           </div>
         )}
       </div>
@@ -689,7 +708,7 @@ const IdeasPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to launch your business?</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Get started with our proven templates and expert guidance to turn ideas into reality.
+            Get started with our proven templates and expert guidance.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
