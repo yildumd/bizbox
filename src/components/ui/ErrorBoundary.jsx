@@ -1,22 +1,58 @@
-// src/components/ui/ErrorBoundary.jsx
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class ErrorBoundary extends Component {
-  state = { hasError: false, error: null };
+  state = { 
+    hasError: false, 
+    error: null,
+    errorInfo: null 
+  };
 
   static getDerivedStateFromError(error) {
-    return { hasError: true, error };
+    return { 
+      hasError: true, 
+      error,
+      timestamp: Date.now() 
+    };
   }
 
   componentDidCatch(error, errorInfo) {
     console.error('Error caught by boundary:', error, errorInfo);
+    this.setState({ errorInfo });
+    
+    // Log to error tracking service if available
+    if (typeof window !== 'undefined' && window._trackJs) {
+      window._trackJs.track(error);
+    }
   }
 
   handleReset = () => {
-    this.setState({ hasError: false, error: null });
-    window.location.reload();
+    // Clear the error and force a hard reload
+    this.setState({ 
+      hasError: false, 
+      error: null,
+      errorInfo: null 
+    });
+    
+    // Add cache busting to ensure fresh load
+    window.location.href = window.location.pathname + '?t=' + Date.now();
   };
+
+  renderErrorDetails() {
+    if (process.env.NODE_ENV !== 'development') return null;
+    
+    return (
+      <details className="mt-4 p-4 bg-gray-100 rounded text-left">
+        <summary className="font-medium cursor-pointer">Error Details</summary>
+        <div className="mt-2">
+          <pre className="text-xs overflow-auto">
+            {this.state.error?.toString()}
+            {this.state.errorInfo?.componentStack}
+          </pre>
+        </div>
+      </details>
+    );
+  }
 
   render() {
     if (this.state.hasError) {
@@ -24,17 +60,31 @@ export default class ErrorBoundary extends Component {
         <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
           <div className="text-center max-w-md">
             <h1 className="text-2xl font-bold mb-4 text-red-600">
-              Application Error
+              Something Went Wrong
             </h1>
             <p className="mb-6 text-gray-600">
-              {this.state.error?.toString() || 'An unexpected error occurred'}
+              We're sorry, but the application encountered an error.
+              {this.state.timestamp && (
+                <span className="block text-sm mt-2">
+                  Error ID: {this.state.timestamp}
+                </span>
+              )}
             </p>
-            <button
-              onClick={this.handleReset}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-            >
-              Refresh Application
-            </button>
+            <div className="space-y-3">
+              <button
+                onClick={this.handleReset}
+                className="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+              >
+                Refresh Application
+              </button>
+              <button
+                onClick={() => window.location.href = '/'}
+                className="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
+              >
+                Go to Homepage
+              </button>
+            </div>
+            {this.renderErrorDetails()}
           </div>
         </div>
       );
@@ -45,5 +95,6 @@ export default class ErrorBoundary extends Component {
 }
 
 ErrorBoundary.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  fallback: PropTypes.node
 };
