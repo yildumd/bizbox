@@ -5,7 +5,10 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist",
+        "runtime": "nodejs18.x",
+        "installCommand": "npm install --prefer-offline",
+        "outputDirectory": "dist"
       }
     }
   ],
@@ -18,8 +21,11 @@
       "continue": true
     },
     {
-      "src": "/_next/static/(.*)",
-      "dest": "/_next/static/$1"
+      "src": "/api/(.*)",
+      "dest": "/api/$1",
+      "headers": {
+        "Cache-Control": "no-cache"
+      }
     },
     {
       "src": "/(.*)",

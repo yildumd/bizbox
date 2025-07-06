@@ -5,53 +5,53 @@ export default class ErrorBoundary extends Component {
   state = { 
     hasError: false, 
     error: null,
-    errorInfo: null 
+    errorInfo: null,
+    timestamp: null
   };
 
   static getDerivedStateFromError(error) {
     return { 
-      hasError: true, 
+      hasError: true,
       error,
-      timestamp: Date.now() 
+      timestamp: Date.now()
     };
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo);
+    console.error('ErrorBoundary caught:', error, errorInfo);
     this.setState({ errorInfo });
     
-    // Log to error tracking service if available
-    if (typeof window !== 'undefined' && window._trackJs) {
+    if (window._trackJs) {
       window._trackJs.track(error);
     }
   }
 
   handleReset = () => {
-    // Clear the error and force a hard reload
-    this.setState({ 
-      hasError: false, 
+    this.setState({
+      hasError: false,
       error: null,
-      errorInfo: null 
+      errorInfo: null,
+      timestamp: null
     });
     
-    // Add cache busting to ensure fresh load
     window.location.href = window.location.pathname + '?t=' + Date.now();
   };
 
-  renderErrorDetails() {
-    if (process.env.NODE_ENV !== 'development') return null;
-    
-    return (
-      <details className="mt-4 p-4 bg-gray-100 rounded text-left">
-        <summary className="font-medium cursor-pointer">Error Details</summary>
-        <div className="mt-2">
-          <pre className="text-xs overflow-auto">
-            {this.state.error?.toString()}
-            {this.state.errorInfo?.componentStack}
-          </pre>
-        </div>
-      </details>
-    );
+  renderDevDetails() {
+    if (process.env.NODE_ENV === 'development') {
+      return (
+        <details className="mt-4 p-4 bg-gray-100 rounded text-left">
+          <summary className="font-medium cursor-pointer">Error Details</summary>
+          <div className="mt-2">
+            <pre className="text-xs overflow-auto">
+              {this.state.error?.toString()}
+              {this.state.errorInfo?.componentStack}
+            </pre>
+          </div>
+        </details>
+      );
+    }
+    return null;
   }
 
   render() {
@@ -60,10 +60,10 @@ export default class ErrorBoundary extends Component {
         <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
           <div className="text-center max-w-md">
             <h1 className="text-2xl font-bold mb-4 text-red-600">
-              Something Went Wrong
+              Application Error
             </h1>
             <p className="mb-6 text-gray-600">
-              We're sorry, but the application encountered an error.
+              {this.state.error?.message || 'An unexpected error occurred'}
               {this.state.timestamp && (
                 <span className="block text-sm mt-2">
                   Error ID: {this.state.timestamp}
@@ -78,13 +78,13 @@ export default class ErrorBoundary extends Component {
                 Refresh Application
               </button>
               <button
-                onClick={() => window.location.href = '/'}
+                onClick={() => (window.location.href = '/')}
                 className="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
               >
                 Go to Homepage
               </button>
             </div>
-            {this.renderErrorDetails()}
+            {this.renderDevDetails()}
           </div>
         </div>
       );

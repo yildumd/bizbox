@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import LoadingSpinner from './components/ui/LoadingSpinner';
@@ -7,16 +7,16 @@ import ErrorBoundary from './components/ui/ErrorBoundary';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import './styles/global.css';
 
-// Enhanced lazy loading with retry mechanism and better error handling
+// Enhanced lazy loading with better error handling and logging
 const lazyLoad = (componentName) => {
   return lazy(async () => {
     try {
       const module = await import(`./pages/${componentName}`);
+      console.log(`Successfully loaded: ${componentName}`);
       return { default: module.default };
     } catch (error) {
       console.error(`Failed to load ${componentName}:`, error);
       
-      // Return a fallback component that allows retries
       return { 
         default: () => (
           <div className="text-center py-12">
@@ -29,6 +29,9 @@ const lazyLoad = (componentName) => {
             >
               Retry Loading
             </button>
+            <div className="mt-4 text-sm text-gray-500">
+              Technical details: {error.message}
+            </div>
           </div>
         )
       };
@@ -36,15 +39,59 @@ const lazyLoad = (componentName) => {
   });
 };
 
-// Direct component imports (better for Vercel deployment)
+// Main page components
 const HomePage = lazyLoad('Home/HomePage');
 const AboutPage = lazyLoad('About/AboutPage');
 const IdeasPage = lazyLoad('BusinessIdeas/IdeasPage');
-const IdeaLayout = lazyLoad('BusinessIdeas/categories/IdeaLayout');
 const ConsultationPage = lazyLoad('Consultation/ConsultationPage');
 const DashboardPage = lazyLoad('Dashboard/DashboardPage');
 const CheckoutPage = lazyLoad('Checkout/CheckoutPage');
 const NotFoundPage = lazyLoad('Error/404');
+
+// Special handler for dynamic idea pages
+const IdeaPageLoader = () => {
+  const { category, id } = useParams();
+  
+  // Validate category and id first
+  if (!category || !id) {
+    return <div className="p-4 text-red-500">Invalid idea parameters</div>;
+  }
+
+  const IdeaComponent = lazy(async () => {
+    try {
+      const module = await import(`./pages/BusinessIdeas/categories/${category}/${id}.jsx`);
+      return { default: module.default };
+    } catch (error) {
+      console.error(`Failed to load idea ${category}/${id}:`, error);
+      return {
+        default: () => (
+          <div className="text-center py-12">
+            <h3 className="text-lg font-medium mb-4">
+              Failed to load this business idea
+            </h3>
+            <div className="mb-4 text-sm text-gray-600">
+              {category}/{id}.jsx not found
+            </div>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+            >
+              Try Again
+            </button>
+          </div>
+        )
+      };
+    }
+  });
+
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<LoadingSpinner />}>
+        <IdeaComponent />
+      </Suspense>
+    </ErrorBoundary>
+  );
+};
 
 export default function App() {
   return (
@@ -52,7 +99,6 @@ export default function App() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* ErrorBoundary wraps the entire content */}
         <ErrorBoundary 
           fallback={
             <div className="text-center py-12">
@@ -67,29 +113,23 @@ export default function App() {
             </div>
           }
         >
-          {/* Suspense for all lazy-loaded components */}
           <Suspense fallback={<LoadingSpinner fullPage />}>
             <Routes>
-              {/* Public Routes */}
               <Route index element={<HomePage />} />
               <Route path="about" element={<AboutPage />} />
               
-              {/* Business Ideas Routes */}
               <Route path="ideas">
                 <Route index element={<IdeasPage />} />
-                {/* Ensure this matches your file structure */}
-                <Route path=":category/:id" element={<IdeaLayout />} />
+                <Route path=":category/:id" element={<IdeaPageLoader />} />
               </Route>
               
               <Route path="consult" element={<ConsultationPage />} />
               
-              {/* Protected Routes */}
               <Route element={<ProtectedRoute />}>
                 <Route path="dashboard" element={<DashboardPage />} />
                 <Route path="checkout" element={<CheckoutPage />} />
               </Route>
               
-              {/* Error Route */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
